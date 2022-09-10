@@ -2,3 +2,79 @@ html {
 	// font-size: 10px;
 	background-color: white;
 }
+
+.App {
+	text-align: center;
+	background-image: linear-gradient(to top, #dda027, #ffdde1);
+	border-radius: 1rem;
+	min-height: 95vh;
+}
+
+.row {
+	// background-color: white;
+	margin: 1rem;
+}
+.row_inner {
+	// background-color: white;
+	margin: auto;
+}
+
+.columns {
+	display: flex; /* flex/inline-flex */
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.column {
+	flex: 10%; // Fractions like 33.33 also work
+	background-color: rgb(232, 212, 175);
+	margin: 1rem;
+	border-radius: 1rem;
+}
+
+.navbar {
+	border-radius: 1rem;
+	// background: radial-gradient(circle, rgb(232, 232, 68) 0%, rgb(237, 231, 106) 94%);
+	// padding: 25px 50px 75px 100px; // padding: top right bottom left
+	// margin: 0;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.block {
+	border-radius: 1rem;
+	width: 100%;
+	min-height: 2rem;
+	transition: 0.66s ease-out;
+	background: radial-gradient(circle, rgb(247, 251, 168) 0%, rgb(236, 172, 33) 90%);
+}
+.block:hover {
+	width: 90%;
+	background-color: rgba(92, 96, 236, 0.471);
+	font-size: 75%;
+}
+
+.spinner {
+	transition: transform .7s ease-in-out;
+}
+.spinner:hover {
+	transform: rotate(360deg);
+}
+
+// .toggle {
+// 	transition: transform .7s ease-in-out;
+// }
+
+// .collapsible {
+// 	border-radius: 1rem;
+// 	width: 100%;
+// 	transition: 0.66s ease-out;
+// 	background: radial-gradient(circle, rgb(247, 251, 168) 0%, rgb(236, 172, 33) 90%);
+// }
+// .collapsible:hover {
+// 	width: 90%;
+// 	background-color: rgba(92, 96, 236, 0.471);
+// 	font-size: 75%;
+// }

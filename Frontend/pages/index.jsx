@@ -1,4 +1,3 @@
-import styles from "./index.module.scss"
 // import { useState } from "react"
 /*	Using Next.js for implicit, automated routing with dependency injection
 	to reduce redundant code,
@@ -28,7 +27,7 @@ import Dashboard from "../components/dashboard.client"
 export default function () {
 
 	return (
-	<div className={styles.App}>
+	<div className="App">
 		<Head>
 		<title>Recipe Tracker</title>
 		<meta
