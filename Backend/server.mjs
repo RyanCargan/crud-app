@@ -9,36 +9,44 @@ import session from "express-session"
 import bodyParser from "body-parser"
 
 import User from "./models/user.mjs"
+import Recipe from "./models/recipe.mjs"
 import passportConfig from "./auth/passportConfig.mjs"
 
 const app = express()
 const PORT = 4000
 
-// Replace these with environment variables hidden from source control when in production enivronments
+// Replace these with environment variables hidden from source control (e.g. .env files + dotenv) when in production enivronments
 const SECRET = "secretstring"
 const DBPASS = "zikapika12345"
 
+// Set up MongoDB connection
 mongoose.connect(`mongodb+srv://ryancargan:${DBPASS}@cluster0.52vyl8r.mongodb.net/?retryWrites=true&w=majority`, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-},
-() => {
-	console.log("Database connection established")
 })
+.then(() => console.log("Database connection established"))
+.catch(err => console.log(err))
+
+// const ObjectId = mongoose.Types.ObjectId
+
+// Get the default connection
+const db = mongoose.connection
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 // Custom middleware
-// const checkLoggedIn = (req, res, next) => {
-// 	if (req.isAuthenticated()) {
-// 		 return res.send("Logged in")
-// 	}
-// 	next()
-// }
 function loggedIn(req, res, next) {
     if (req.user) {
         next()
     } else {
         res.status(401).send('User has failed to login...')
     }
+}
+
+function isValidObjectID(parameter, name) {
+	let checkForValidMongoDbID = new RegExp("^[0-9a-fA-F]{24}$");
+	return checkForValidMongoDbID.test(parameter)
 }
 
 // Middleware configuration
@@ -61,7 +69,17 @@ app.use(passport.initialize())
 app.use(passport.session())
 passportConfig(passport) // Alternative to CJS one-liner: require("./auth/passportConfig.mjs")(passport)
 
-// Route list
+/*	Route list
+	REST API methods:
+		GET: Download resource from server
+		POST: Create new resource without considering/replacing existing duplicates
+		DELETE: Remove resource from server
+		PUT: Create new resource or replace existing one
+			 (higher risk of accidental data loss here if partial info is sent by mistake)
+		PATCH: Update existing resource without creating new ones
+*/
+
+//// RESTful user management routes
 app.post("/login", (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) throw err
@@ -93,37 +111,57 @@ app.post("/register", (req, res) => {
 	})
 })
 
-// app.get("/user",
-// 	passport.authenticate('local',
-// 		{ failureRedirect: '/fail', failureMessage: true }),
-// 			(req, res) => {
-// 				res.redirect('/~' + req.user.username);
-// })
-// app.get('/failure', function(req, res) {
-// 	return res.status(401).send('User has failed to login...')
-// })
-
-// app.get('/success', function(req, res) {
-// 	return res.status(200).send('User is logged in successfully...')
-// })
-
-// app.get('/user', passport.authenticate('local', {
-// 	successRedirect: '/success',
-// 	failureRedirect: '/failure',
-// }))
-app.get('/user', loggedIn, (req, res, next) => {
+app.get("/user", loggedIn, (req, res) => {
     // req.user object can be assumed to exist here
-	res.status(200).send('User is logged in successfully...')
+	return res.status(200).send(req.user)
 })
 
-// app.get('/authcheck', loggedIn, function(req, res, next) {
-//     res.send(req.user)
-// })
+app.patch("/user", loggedIn, (req, res) => {
+    // req.user object can be assumed to exist here
+	return res.status(200).send(req.user)
+})
 
-// app.get("/authcheck", passport.authenticate("local", {
-// 	successRedirect: '/success',
-// 	failureRedirect: '/fail',
-// }))
+app.delete("/user", loggedIn, (req, res) => {
+    // req.user object can be assumed to exist here
+	return res.status(200).send(req.user)
+})
+
+app.get("/user/_id/:_id", loggedIn, (req, res, next) => {
+	if (isValidObjectID(req.params._id) === true){
+		User.findById({ _id: req.params._id }, async (err, doc) => { // return User.findById... optional
+			if (err) throw err
+			if (doc) {
+				res.status(200).send({username: doc.username, id: doc.id})
+				next()
+			} else {
+				res.send("No such user")
+			}
+	})} else {
+		res.send("No such user") // Send any res back to ensure client won't hang indefinitely
+	}
+	// Person.findOne({ 'name.last': 'Ghost' }, ***'name occupation'***, function (err, person) {
+	// 	if (err) return handleError(err);
+	// 	console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+	//   })
+})
+
+//// RESTful recipe management routes
+
+app.post("/recipe", (req, res) => {
+	return res.status(200)
+})
+
+app.get("/recipe", (req, res) => {
+	return res.status(200)
+})
+
+app.delete("/recipe", (req, res) => {
+	return res.status(200)
+})
+
+app.patch("/recipe", (req, res) => {
+	return res.status(200)
+})
 
 // Server startup point
 app.listen(PORT, () => {
