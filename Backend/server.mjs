@@ -26,6 +26,21 @@ mongoose.connect(`mongodb+srv://ryancargan:${DBPASS}@cluster0.52vyl8r.mongodb.ne
 	console.log("Database connection established")
 })
 
+// Custom middleware
+// const checkLoggedIn = (req, res, next) => {
+// 	if (req.isAuthenticated()) {
+// 		 return res.send("Logged in")
+// 	}
+// 	next()
+// }
+function loggedIn(req, res, next) {
+    if (req.user) {
+        next()
+    } else {
+        res.status(401).send('User has failed to login...')
+    }
+}
+
 // Middleware configuration
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -78,9 +93,37 @@ app.post("/register", (req, res) => {
 	})
 })
 
-app.get("/user", (req, res) => {
-	res.send(req.user)
+// app.get("/user",
+// 	passport.authenticate('local',
+// 		{ failureRedirect: '/fail', failureMessage: true }),
+// 			(req, res) => {
+// 				res.redirect('/~' + req.user.username);
+// })
+// app.get('/failure', function(req, res) {
+// 	return res.status(401).send('User has failed to login...')
+// })
+
+// app.get('/success', function(req, res) {
+// 	return res.status(200).send('User is logged in successfully...')
+// })
+
+// app.get('/user', passport.authenticate('local', {
+// 	successRedirect: '/success',
+// 	failureRedirect: '/failure',
+// }))
+app.get('/user', loggedIn, (req, res, next) => {
+    // req.user object can be assumed to exist here
+	res.status(200).send('User is logged in successfully...')
 })
+
+// app.get('/authcheck', loggedIn, function(req, res, next) {
+//     res.send(req.user)
+// })
+
+// app.get("/authcheck", passport.authenticate("local", {
+// 	successRedirect: '/success',
+// 	failureRedirect: '/fail',
+// }))
 
 // Server startup point
 app.listen(PORT, () => {

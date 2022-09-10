@@ -53,7 +53,7 @@ function HomePage() {
 		.then(console.log(data))
 	}
 
-	return(
+	return (
 	<div className={styles.App}>
 		<h1>Home</h1>
 		<hr />
