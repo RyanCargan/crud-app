@@ -53,7 +53,7 @@ function isValidObjectID(parameter, name) {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors({
-	origin: true, // URL & port of client app
+	origin: true, // Normally a string with the URL & port of the client site
 	credentials: true,
 }))
 
