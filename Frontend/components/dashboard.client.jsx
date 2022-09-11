@@ -47,7 +47,7 @@ export default function () {
 
 	return (
 	<>
-	<h1>Dashboard</h1>
+	<h2>Recipe Dashboard</h2>
 	<div className="columns">
 		{/* <div className={styles.column}> */}
 		{listItems}

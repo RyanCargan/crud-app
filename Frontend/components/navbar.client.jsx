@@ -1,5 +1,7 @@
 import { useRouter } from "next/router"
-import { useState, useEffect } from "react";
+import { useState, useCallback, useContext } from "react"
+import { AppContext } from "../context/state"
+import produce from "immer"
 import { useSpring, animated, config } from "react-spring"
 // import { useStore } from "../hooks/useStore"
 import useMeasure from "react-use-measure"
@@ -13,6 +15,17 @@ import {
 
 export default function () {
 
+	const context = useContext(AppContext)
+
+	const toggleState = useCallback((id) => {
+		context.setSession(
+			produce((draft) => {
+				const item = draft.find((item) => item.id === id)
+				item.state = !item.state
+			})
+		)
+	}, [])
+
 	const router = useRouter()
 
 	const handleRefresh = () => {
@@ -20,15 +33,6 @@ export default function () {
 	}
 
 	const [isOpen, setIsOpen] = useState(false)
-
-	// const login = useStore((state) => state.set)
-	// const toggleLogin = useStore((state) => state.toggleLogin)
-
-	// const toggleLogin = (false)
-	useEffect(() => {
-		// toggleLogin()
-		console.log("Login visibility off")
-	}, [])
 
 
 	const [measureRef, { height }] = useMeasure()
@@ -47,8 +51,6 @@ export default function () {
 		<div className="navbar">
 			<div style={{
 				width: "100%",
-				// display: 'flex',
-				// justifyContent: 'center',
 				alignItems: 'center'
 			}}>
 				<button className="block" onClick={() => setIsOpen((val) => !val)}>
@@ -60,7 +62,6 @@ export default function () {
 					<div
 					ref={measureRef}
 					style={{
-						// border: "1px solid black",
 						padding: "12px"
 					}}
 					>
@@ -71,26 +72,37 @@ export default function () {
 							{/* Reminder: parentheses on handler functions will cause errors */}
 							<GrRefresh size={20} className="spinner" />
 						</button>
-						{/* Register */}
-						<button
-							className="block"
-							onClick={() => console.log("CLICKED")}>
-								Register
-						</button>
 						{/* Login */}
 						<button
 							className="block"
 							onClick={() => {
-								// toggleLogin
-								console.log("Toggled!")
+								toggleState("loginVisibility")
 							}}>
 								Login
+						</button>
+						{/* Register */}
+						<button
+							className="block"
+							onClick={() => {
+								toggleState("registerVisibility")
+							}}>
+								Register
 						</button>
 						{/* Profile */}
 						<button
 							className="block"
-							onClick={() => console.log("CLICKED")}>
+							onClick={() => {
+								toggleState("profileVisibility")
+							}}>
 								Profile
+						</button>
+						{/* Dashboard */}
+						<button
+							className="block"
+							onClick={() => {
+								toggleState("dashboardVisibility")
+							}}>
+								Toggle<br />Dashboard
 						</button>
 						<Logout className="block" />
 					</div>

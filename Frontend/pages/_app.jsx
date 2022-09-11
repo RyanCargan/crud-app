@@ -4,9 +4,24 @@ import { AppContext } from "../context/state"
 
 export default function Application({ Component, pageProps }) {
 
-	const initialState = {
-		visibility: {login: false}
-	}
+	const initialState = [
+		{
+			id: "loginVisibility",
+			state: false
+		},
+		{
+			id: "registerVisibility",
+			state: false
+		},
+		{
+			id: "profileVisibility",
+			state: false
+		},
+		{
+			id: "dashboardVisibility",
+			state: true
+		},
+	]
 
 	const [session, setSession] = useState(initialState)
 

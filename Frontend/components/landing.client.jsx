@@ -1,7 +1,7 @@
 import NavBar from '../components/navbar.client'
 import Login from "../components/login.client"
 import Register from "../components/register.client"
-import User from "../components/user.client"
+import Profile from "../components/user.client"
 import Dashboard from "../components/dashboard.client"
 import List from "../components/list.client"
 import Upload from "../components/upload.client"
@@ -24,12 +24,12 @@ export default function () {
 		<NavBar />
 		<h1>Recipe Tracker</h1>
 		<hr />
-		{context.session.visibility.login && <Login />}
-		<Register />
-		<User />
-		<Dashboard />
-		<List />
-		<Upload />
+		{context.session[0].state && <Login />}
+		{context.session[1].state && <Register />}
+		{context.session[2].state && <Profile />}
+		{context.session[3].state && <Dashboard />}
+		{/* <List />
+		<Upload /> */}
 	</>
 	)
 }
