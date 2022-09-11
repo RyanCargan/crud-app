@@ -51,7 +51,7 @@ export default function () {
 			<h1>Item List</h1>
 			<div>
 				<ul>
-					{items.map((item, i) => {
+					{items ? items.map((item, i) => {
 						return (
 						<Fragment key={i}>
 							<li
@@ -76,7 +76,7 @@ export default function () {
 							</li>
 						</Fragment>
 						)
-					})}
+					}) : []}
 				</ul>
 			</div>
 		</>
