@@ -14,7 +14,7 @@ export default function () {
 				password: regPass,
 			},
 			withCredentials: true,
-			url: "http://localhost:4000/register",
+			url: `${process.env.NEXT_PUBLIC_URL}/register`,
 		})
 		.then((res) => console.log(res))
 	}

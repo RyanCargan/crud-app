@@ -9,7 +9,7 @@ export default function () {
 		axios({
 			method: "GET",
 			withCredentials: true,
-			url: "http://localhost:4000/user",
+			url: `${process.env.NEXT_PUBLIC_URL}/user`,
 		})
 		.then((res) => {
 			setData(res.data)

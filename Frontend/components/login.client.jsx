@@ -14,7 +14,7 @@ export default function () {
 				password: logPass,
 			},
 			withCredentials: true,
-			url: "http://localhost:4000/login",
+			url: `${process.env.NEXT_PUBLIC_URL}/login`,
 		})
 		.then((res) => console.log(res))
 		.then(console.log(logName))
