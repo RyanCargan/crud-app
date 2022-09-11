@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 export default function () {
 
-	// const array = [1, 2, 3, 4, 5]
+	// Placeholder for array fetched with Mongoose
 	const array = [
 		{id: 1, name: "First", ingredients: ["Bun","Patty"]},
 		{id: 2, name: "French Fries", ingredients: ["Potato", "Ketchup"]},
