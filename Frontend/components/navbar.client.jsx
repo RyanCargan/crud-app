@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import { useState } from "react";
 import { useSpring, animated, config } from "react-spring"
 import useMeasure from "react-use-measure"
+import Logout from "./logout.client"
 
 import {
 	GrAddCircle,
@@ -78,11 +79,12 @@ export default function () {
 								Profile
 						</button>
 						{/* Logout */}
-						<button
+						{/* <button
 							className="block"
 							onClick={console.log("CLICKED")}>
 								Logout
-						</button>
+						</button> */}
+						<Logout className="block" />
 					</div>
 				</animated.div>
 			</div>

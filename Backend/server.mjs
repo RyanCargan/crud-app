@@ -10,10 +10,28 @@ import bodyParser from "body-parser"
 
 import User from "./models/user.mjs"
 import Recipe from "./models/recipe.mjs"
+import Image from "./models/image.mjs"
 import passportConfig from "./auth/passportConfig.mjs"
 
+import fs from "fs"
+import path from "path"
+import * as dotenv from "dotenv"
+dotenv.config()
+import multer from "multer"
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+})
+
+var upload = multer({ storage: storage })
+
 const app = express()
-const PORT = 4000
+const PORT = process.env.PORT || "4000"
 
 // Replace these with environment variables hidden from source control (e.g. .env files + dotenv) when in production enivronments
 const SECRET = "secretstring"
@@ -94,6 +112,14 @@ app.post("/login", (req, res, next) => {
 	})(req, res, next)
 })
 
+app.post('/logout', function(req, res, next){
+	req.logout(function(err) {
+		if (err) { return next(err) }
+	//   res.redirect('/')
+		return res.send("User successfully logged out")
+	})
+})
+
 app.post("/register", (req, res) => {
 	User.findOne({ username: req.body.username }, async (err, doc) => {
 		if (err) throw err
@@ -161,6 +187,44 @@ app.delete("/recipe", (req, res) => {
 
 app.patch("/recipe", (req, res) => {
 	return res.status(200)
+})
+
+// Image transfers
+app.get("/image", (req, res) => {
+    Image.find({}, (err, items) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send('An error occurred', err)
+        }
+        else {
+            res.send({ items: items })
+        }
+    })
+})
+
+app.post("/image", upload.single('image'), (req, res, next) => {
+    var obj = {
+        name: req.body.name,
+        desc: req.body.desc,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    Image.create(obj, (err, item) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            item.save()
+            res.status(200)
+        }
+    })
+})
+
+// Message
+app.get("/", (req, res) => {
+	return res.send("Backend active...")
 })
 
 // Server startup point
