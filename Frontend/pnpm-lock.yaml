@@ -4,6 +4,7 @@ specifiers:
   axios: ^0.27.2
   eslint: 8.23.0
   eslint-config-next: 12.3.0
+  immer: ^9.0.15
   next: ^12.3.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -15,13 +16,14 @@ specifiers:
 
 dependencies:
   axios: 0.27.2
+  immer: 9.0.15
   next: 12.3.0_wgobgza36qebbzsbfctw2tohpy
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
   react-spring: 9.5.2_biqbaboplfbrettd7655fr4n2y
   react-use-measure: 2.1.1_biqbaboplfbrettd7655fr4n2y
-  zustand: 4.1.1_react@18.2.0
+  zustand: 4.1.1_immer@9.0.15+react@18.2.0
 
 devDependencies:
   eslint: 8.23.0
@@ -1272,6 +1274,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer/9.0.15:
+    resolution: {integrity: sha512-2eB/sswms9AEUSkOm4SbV5Y7Vmt/bKRwByd52jfLkW4OLYeaTP3EEiJ9agqU0O/tq6Dk62Zfj+TJSqfm1rLVGQ==}
+    dev: false
+
   /immutable/4.1.0:
     resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
     dev: true
@@ -2126,7 +2132,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand/4.1.1_react@18.2.0:
+  /zustand/4.1.1_immer@9.0.15+react@18.2.0:
     resolution: {integrity: sha512-h4F3WMqsZgvvaE0n3lThx4MM81Ls9xebjvrABNzf5+jb3/03YjNTSgZXeyrvXDArMeV9untvWXRw1tY+ntPYbA==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -2138,6 +2144,7 @@ packages:
       react:
         optional: true
     dependencies:
+      immer: 9.0.15
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false

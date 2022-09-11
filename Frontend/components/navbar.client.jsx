@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSpring, animated, config } from "react-spring"
+// import { useStore } from "../hooks/useStore"
 import useMeasure from "react-use-measure"
 import Logout from "./logout.client"
 
@@ -19,6 +20,16 @@ export default function () {
 	}
 
 	const [isOpen, setIsOpen] = useState(false)
+
+	// const login = useStore((state) => state.set)
+	// const toggleLogin = useStore((state) => state.toggleLogin)
+
+	// const toggleLogin = (false)
+	useEffect(() => {
+		// toggleLogin()
+		console.log("Login visibility off")
+	}, [])
+
 
 	const [measureRef, { height }] = useMeasure()
 
@@ -63,27 +74,24 @@ export default function () {
 						{/* Register */}
 						<button
 							className="block"
-							onClick={console.log("CLICKED")}>
+							onClick={() => console.log("CLICKED")}>
 								Register
 						</button>
 						{/* Login */}
 						<button
 							className="block"
-							onClick={console.log("CLICKED")}>
+							onClick={() => {
+								// toggleLogin
+								console.log("Toggled!")
+							}}>
 								Login
 						</button>
 						{/* Profile */}
 						<button
 							className="block"
-							onClick={console.log("CLICKED")}>
+							onClick={() => console.log("CLICKED")}>
 								Profile
 						</button>
-						{/* Logout */}
-						{/* <button
-							className="block"
-							onClick={console.log("CLICKED")}>
-								Logout
-						</button> */}
 						<Logout className="block" />
 					</div>
 				</animated.div>

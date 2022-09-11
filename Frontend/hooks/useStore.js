@@ -9,7 +9,7 @@
 	for purposes such as using time travel debugging with app state.
 */
 import create from "zustand"
-
+// import produce from "immer"
 import { devtools, persist} from "zustand/middleware"
 
 // export const useStore = create((set, get) => ({
@@ -17,6 +17,10 @@ import { devtools, persist} from "zustand/middleware"
 
 // Use generic item store until specialization is needed
 const store = (set) => ({
+		login: false,
+		registration: false,
+		profile: false,
+	toggleLogin: () => set((state) => ({ login: !state.login })),
 	items: [],
 	addItem: (item) => {
 		set((state) => ({
