@@ -62,25 +62,25 @@ export default function () {
 						{/* Register */}
 						<button
 							className="block"
-							onClick={{}}>
+							onClick={console.log("CLICKED")}>
 								Register
 						</button>
 						{/* Login */}
 						<button
 							className="block"
-							onClick={{}}>
+							onClick={console.log("CLICKED")}>
 								Login
 						</button>
 						{/* Profile */}
 						<button
 							className="block"
-							onClick={{}}>
+							onClick={console.log("CLICKED")}>
 								Profile
 						</button>
 						{/* Logout */}
 						<button
 							className="block"
-							onClick={{}}>
+							onClick={console.log("CLICKED")}>
 								Logout
 						</button>
 					</div>
