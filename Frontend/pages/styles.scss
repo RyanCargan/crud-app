@@ -63,18 +63,12 @@ html {
 	transform: rotate(360deg);
 }
 
-// .toggle {
-// 	transition: transform .7s ease-in-out;
-// }
+.scene{
+    width:99vw;
+    height:96vh;
+	background: rgb(40, 40, 40);
+}
 
-// .collapsible {
-// 	border-radius: 1rem;
-// 	width: 100%;
-// 	transition: 0.66s ease-out;
-// 	background: radial-gradient(circle, rgb(247, 251, 168) 0%, rgb(236, 172, 33) 90%);
-// }
-// .collapsible:hover {
-// 	width: 90%;
-// 	background-color: rgba(92, 96, 236, 0.471);
-// 	font-size: 75%;
-// }
+.canvas{
+    background: #000;
+}

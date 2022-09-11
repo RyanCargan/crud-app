@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import getEnv from "../utils/env"
 
 export default function () {
 
@@ -9,7 +10,7 @@ export default function () {
 		axios({
 			method: "GET",
 			withCredentials: true,
-			url: `${process.env.NEXT_PUBLIC_URL}/user`,
+			url: `${getEnv()}/user`,
 		})
 		.then((res) => {
 			setData(res.data)

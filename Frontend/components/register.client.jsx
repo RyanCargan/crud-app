@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import getEnv from "../utils/env"
 
 export default function () {
 
@@ -14,7 +15,7 @@ export default function () {
 				password: regPass,
 			},
 			withCredentials: true,
-			url: `${process.env.NEXT_PUBLIC_URL}/register`,
+			url: `${getEnv()}/register`,
 		})
 		.then((res) => console.log(res))
 	}

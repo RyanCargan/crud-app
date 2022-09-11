@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useRouter } from "next/router"
+import getEnv from "../utils/env"
 
 export default function (props) {
 
@@ -13,7 +14,7 @@ export default function (props) {
 		axios({
 			method: "POST",
 			withCredentials: true,
-			url: `${process.env.NEXT_PUBLIC_URL}/logout`,
+			url: `${getEnv()}/logout`,
 		})
 		.then((res) => console.log(res))
 		.then(handleRefresh)

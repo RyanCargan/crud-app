@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import getEnv from "../utils/env"
 
 export default function () {
 
@@ -14,7 +15,8 @@ export default function () {
 				password: logPass,
 			},
 			withCredentials: true,
-			url: `${process.env.NEXT_PUBLIC_URL}/login`,
+			// url: `http://localhost:4000/login`,
+			url: `${getEnv()}/login`,
 		})
 		.then((res) => console.log(res))
 		.then(console.log(logName))
