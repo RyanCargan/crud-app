@@ -19,3 +19,5 @@ Dependencies not listed in package.json files are listed here.
 - Some components still use placeholders in place of proper fetched objects due to time constraints
 - Version control history should show all commits leading up to 4 PM GMT +5:30 (48 hours from the initial email), I understand anything made after that is a change made for personal work and won't count towards appraisal
 - App is an SPA using conditional rendering triggered by nav bar buttons
+
+Using Next.js for implicit, automated routing with dependency injection to reduce redundant code, and automatic server-side rendering for increased client-side performance, UX, and improved SEO. Web crawlers like Googlebot have technically been able to access dynamic single page applications (that use client-side rendering) for a while now. However, the slower rendering times for CSR apps (among other issues) could influence ranking to some extent. SSR is still typically considered optimal assuming the developer can deal with some additional requirements when coding.

@@ -1,5 +1,7 @@
 html {
 	// font-size: 10px;
+	// overflow: hidden !important;
+	// background-color: black;
 	background-color: white;
 }
 
@@ -11,22 +13,20 @@ html {
 }
 
 .row {
-	// background-color: white;
 	margin: 1rem;
 }
 .row_inner {
-	// background-color: white;
 	margin: auto;
 }
 
 .columns {
-	display: flex; /* flex/inline-flex */
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
 }
 .column {
-	flex: 10%; // Fractions like 33.33 also work
+	flex: 10%;
 	background-color: rgb(232, 212, 175);
 	margin: 1rem;
 	border-radius: 1rem;
@@ -34,9 +34,6 @@ html {
 
 .navbar {
 	border-radius: 1rem;
-	// background: radial-gradient(circle, rgb(232, 232, 68) 0%, rgb(237, 231, 106) 94%);
-	// padding: 25px 50px 75px 100px; // padding: top right bottom left
-	// margin: 0;
 	text-align: center;
 	display: flex;
 	justify-content: center;

@@ -1,0 +1,9 @@
+# Switch this .gitignore to whitelist mode
+*
+!*/
+
+# Track self
+!.gitignore
+
+# Whitelist
+!README.md
