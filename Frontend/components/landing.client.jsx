@@ -1,17 +1,17 @@
-import NavBar from '../components/navbar.client'
-import Login from "../components/login.client"
-import Register from "../components/register.client"
-import Profile from "../components/user.client"
-import Dashboard from "../components/dashboard.client"
-import List from "../components/list.client"
-import Upload from "../components/upload.client"
+import {
+	Dashboard,
+	Login,
+	Navbar,
+	Register,
+	User as Profile,
+} from "../utils/barrel"
 
 // import { useStore } from "zustand"
 // import { useAppContext } from "../context/state"
 import { AppContext } from "../context/state"
 import { useContext, useState } from "react"
 
-export default function () {
+export const Landing = () => {
 
     // const [value, setValue] = useState()
     const context = useContext(AppContext)
@@ -21,7 +21,7 @@ export default function () {
 
 	return(
 	<>
-		<NavBar />
+		<Navbar />
 		<h1>Recipe Tracker</h1>
 		<hr />
 		{context.session[0].state && <Login />}

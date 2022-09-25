@@ -1,4 +1,4 @@
-export default function () {
+export const Upload = () => {
 	return (
 	<>
     <h1>To Upload Image on mongoDB</h1>

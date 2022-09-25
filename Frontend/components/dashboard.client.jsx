@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-export default function () {
+export const Dashboard = () => {
 
 	// Placeholder for array fetched with Mongoose
 	const array = [

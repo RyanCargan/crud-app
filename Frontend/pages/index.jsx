@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Landing from "../components/landing.client"
+import { Landing } from "../utils/barrel"
 
 export default function () {
 

@@ -1,7 +1,7 @@
 import { useState, Fragment } from "react"
 import { useStore } from "../hooks/useStore"
 
-export default function () {
+export const List = () => {
 	// Batch 1
 	const addItem = useStore((state) => {
 		return (state.addItem)

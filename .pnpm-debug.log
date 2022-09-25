@@ -1,0 +1,14 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+    "err": {
+      "name": "pnpm",
+      "message": "No package.json (or package.yaml, or package.json5) was found in \"/home/ryan/dev/work/corporate/crud-app\".",
+      "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+      "stack": "pnpm: No package.json (or package.yaml, or package.json5) was found in \"/home/ryan/dev/work/corporate/crud-app\".\n    at readProjectManifest (/nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:19656:13)\n    at async Object.readProjectManifestOnly (/nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:19660:28)\n    at async readProjectManifestOnly (/nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:43809:24)\n    at async Object.handler (/nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:171890:24)\n    at async /nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:176453:21\n    at async run (/nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:176427:34)\n    at async runPnpm (/nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:176645:5)\n    at async /nix/store/9fwrhm16si29pzi6nk1c994cgvb5qggc-pnpm-7.1.1/lib/node_modules/pnpm/dist/pnpm.cjs:176637:7"
+    }
+  }
+}

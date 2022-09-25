@@ -2,7 +2,7 @@ import axios from "axios"
 import { useRouter } from "next/router"
 import getEnv from "../utils/env"
 
-export default function (props) {
+export const Logout = (props) => {
 
 	const router = useRouter()
 

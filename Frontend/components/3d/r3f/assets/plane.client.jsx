@@ -1,4 +1,6 @@
-export default function () {
+import { usePlane } from "@react-three/cannon"
+
+export const Plane = () => {
 	const [ref] = usePlane(() => ({
 		rotation: [-Math.PI / 2, 0, 0],
 	}))

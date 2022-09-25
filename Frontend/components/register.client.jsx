@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import getEnv from "../utils/env"
 
-export default function () {
+export const Register = () => {
 
 	const [regName, setRegName] = useState("")
 	const [regPass, setRegPass] = useState("")

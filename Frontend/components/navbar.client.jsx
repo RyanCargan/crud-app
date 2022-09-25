@@ -5,7 +5,7 @@ import produce from "immer"
 import { useSpring, animated, config } from "react-spring"
 // import { useStore } from "../hooks/useStore"
 import useMeasure from "react-use-measure"
-import Logout from "./logout.client"
+import { Logout } from "../utils/barrel"
 
 import {
 	GrAddCircle,
@@ -13,7 +13,7 @@ import {
 	GrRefresh,
 } from "react-icons/gr"
 
-export default function () {
+export const Navbar = () => {
 
 	const context = useContext(AppContext)
 
